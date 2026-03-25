@@ -69,7 +69,7 @@ Fake_Job_Scam_Detection/
 ├── data/
 │ └── datasets
 
-## 🚀 How to Run the Project
+##  How to Run the Project
 
 ### 🔹 Step 1: Clone Repository
 
@@ -101,8 +101,8 @@ streamlit run app.py
 
 ## Input Options
 
-- ✍️ Text Input (Paste job description)
-- 📄 File Upload:
+-  Text Input (Paste job description)
+-  File Upload:
   - `.txt`
   - `.pdf`
   - `.docx`
@@ -135,10 +135,10 @@ streamlit run app.py
 
 ## Team Contribution
 
-- 👤 Member 1: Model Training & Machine Learning Algorithms
-- 👤 Member 2: Hybrid Prediction Logic (ML + Rules)
-- 👤 Member 3: Rule-Based System & Explainability
-- 👤 Member 4: Frontend Development & Deployment (Streamlit)
+- Member 1: Model Training & Machine Learning Algorithms
+- Member 2: Hybrid Prediction Logic (ML + Rules)
+- Member 3: Rule-Based System & Explainability
+- Member 4: Frontend Development & Deployment (Streamlit)
 
 ## Conclusion
 
