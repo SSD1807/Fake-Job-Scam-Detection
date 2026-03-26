@@ -73,7 +73,7 @@ Fake_Job_Scam_Detection/
 
 ### 🔹 Step 1: Clone Repository
 
-git clone https://github.com/yourusername/Fake-Job-Scam-Detection.git
+git clone https://github.com/SSD1807/Fake-Job-Scam-Detection.git
 
 cd Fake-Job-Scam-Detection
 
