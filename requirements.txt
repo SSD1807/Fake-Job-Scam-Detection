@@ -3,3 +3,5 @@ numpy
 scikit-learn
 scipy
 streamlit
+PyPDF2
+python-docx
