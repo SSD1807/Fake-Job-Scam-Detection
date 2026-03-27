@@ -146,3 +146,74 @@ pickle.dump(model, open("model.pkl", "wb"))
 pickle.dump(vectorizer, open("vectorizer.pkl", "wb"))
 
 print("\nModel and vectorizer saved successfully!")
+
+import matplotlib.pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay, roc_curve
+
+print("\nGenerating Graphs...\n")
+
+# -------------------------------
+# 1. Confusion Matrix
+# -------------------------------
+ConfusionMatrixDisplay.from_estimator(model, X_test, y_test)
+plt.title("Confusion Matrix")
+plt.savefig("confusion_matrix.png")
+plt.close()
+
+
+# -------------------------------
+# 2. Model Comparison Graph
+# -------------------------------
+model_names = []
+accuracy_scores = []
+
+for name, clf in {
+    "Logistic Regression": best_lr,
+    "Naive Bayes": MultinomialNB(),
+    "SVM": SVC(probability=True),
+    "Random Forest": RandomForestClassifier(n_estimators=100)
+}.items():
+
+    clf.fit(X_train, y_train)
+    y_pred_temp = clf.predict(X_test)
+
+    acc = accuracy_score(y_test, y_pred_temp)
+
+    model_names.append(name)
+    accuracy_scores.append(acc)
+
+# Add ensemble
+model_names.append("Ensemble")
+accuracy_scores.append(accuracy_score(y_test, y_pred))
+
+plt.figure()
+plt.bar(model_names, accuracy_scores)
+plt.title("Model Comparison")
+plt.xlabel("Models")
+plt.ylabel("Accuracy")
+plt.xticks(rotation=20)
+plt.savefig("model_comparison.png")
+plt.close()
+
+
+# -------------------------------
+# 3. ROC Curve
+# -------------------------------
+try:
+    y_prob = model.predict_proba(X_test)[:, 1]
+
+    fpr, tpr, _ = roc_curve(y_test, y_prob)
+
+    plt.figure()
+    plt.plot(fpr, tpr)
+    plt.title("ROC Curve")
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.savefig("roc_curve.png")
+    plt.close()
+
+except Exception as e:
+    print("ROC curve skipped:", e)
+
+
+print("\nAll graphs saved successfully!\n")
